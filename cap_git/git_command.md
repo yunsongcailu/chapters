@@ -46,7 +46,7 @@
 ```
 ### 远程仓库
 ```zsh
-    # github 为例
+    # github 为例 2021年以后已经不支持用户名密码上传 必须使用SSH
     # github 创建仓库
     # 本地项目根目录下执行
     git clone https://github.com/yunsongcailu/chapters.git
@@ -54,4 +54,23 @@
     git config user.name "yunsongcailu"
     git config user.email "yunsongcailu2020@gmail.com"
     git status
+    # MACOS: SSH连接远程仓库github
+    git config --global user.name "yunsong"
+    git config --global user.email "yunsong@email.com"
+    git config -l
+    
+    ls ~/.ssh 
+    rm -rf ~/.ssh
+    ssh-keygen -t rsa -C "name@email.com"
+    # push Enter key * 3 按三个回车
+    eval "ssh-agent -s"
+    ssh-add ~/.ssh/id_rsa
+    # if err: Could not open a connection to your authentication agent.,则继续输入
+    ssh-agent bash
+    ssh-add ~/.ssh/id_rsa
+    #如下图所示,出现Identity added字段,则表示写入成功,ssh key公钥便保存在id_rsa.pub文件中了:
+    cat ~/.ssh/id_rsa.pub
+    # 将ssh key公钥打印出来,并复制到 github/settings/SSH and GPG keys /new ssh key
+    # 终端测试连接 yes 返回: You're successfully...
+    ssh git@github.com
 ```
