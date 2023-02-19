@@ -131,4 +131,3 @@ dmypy.json
 .idea/
 .DS_Store
 .gitignore
-.idea/*
