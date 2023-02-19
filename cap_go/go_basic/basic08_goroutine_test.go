@@ -7,6 +7,10 @@ import (
 )
 
 func TestBasicGoroutine(t *testing.T) {
+	// deadline
+	// 1. 如果没有缓冲,在没有消费者时生产数据
+	// 2. 生产数据结束要关闭
+
 	ch1, ch2, ch3 := make(chan int), make(chan int), make(chan int)
 	//var wg sync.WaitGroup
 
